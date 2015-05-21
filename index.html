@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+
+	</head>
+	<body>
+		<form id="form">
+			id: <br>
+			<input type="text" name="id" id="id">
+			<br>
+			nome: <br>
+			<input type="text" name="nome" id="nome">
+			<br>
+			telefone: <br>
+			<input type="text" name="telefone" id="telefone">
+			<br><br>
+			<input type="submit" value="Salvar">
+		</form>
+			<button type="button" id="carregar">Carregar</button> 
+
+	<script>
+		document.getElementById("form").addEventListener("submit", function(){
+			var usuario = {
+				id: document.getElementById("id").value,
+				nome: document.getElementById("nome").value,
+				telefone: document.getElementById("telefone").value
+			}
+			localStorage.setItem("usuario", JSON.stringify(usuario))
+		});
+		document.getElementById("carregar").addEventListener("click", function(){
+			var usuario = JSON.parse(localStorage.getItem("usuario"));
+			
+			document.getElementById("id").value = usuario.id;
+			document.getElementById("nome").value = usuario.nome;
+			document.getElementById("telefone").value = usuario.telefone;
+		});
+
+	</script>
+	</body>
+</html>
